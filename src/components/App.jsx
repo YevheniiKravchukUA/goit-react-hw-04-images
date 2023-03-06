@@ -49,16 +49,10 @@ export function App() {
     <>
       <Searchbar onFormSubmit={onFormSubmit} />
       {images.length > 1 && (
-        <>
-          <ImageGallery images={images} toggleModal={toggleModal} />
-
-          {isLoad ? (
-            <Loader />
-          ) : (
-            totalHits >= page * 12 && <Button onLoadMoreButtonClick={setPage} />
-          )}
-        </>
+        <ImageGallery images={images} toggleModal={toggleModal} />
       )}
+      {isLoad && <Loader />}
+      {totalHits >= page * 12 && <Button onLoadMoreButtonClick={setPage} />}
       {isOpen && <Modal largeImage={largeImage} toggleModal={toggleModal} />}
     </>
   );
